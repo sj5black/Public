@@ -1,0 +1,49 @@
+[
+  {
+    "session_id": "79efe597-670a-43b7-b26a-ad270f79e660",
+    "name": "세션 1",
+    "messages": [
+      {
+        "role": "user",
+        "content": "23학년도 입학생이 이수해야할 교양필수 과목을 알려주세요.",
+        "timestamp": "2025-09-10T17:01:36.334287",
+        "sources": []
+      },
+      {
+        "role": "assistant",
+        "content": "2023학년도 입학생이 이수해야 할 교양필수 과목은 다음과 같습니다:\n\n- English Presentation & Discussion (1AU)\n- Advanced English Listening (1AU)\n- Advanced English Reading (1AU)\n- Advanced English Writing (1AU)\n- 논술 (3학점)\n- 인성/리더십 (2AU)\n- 즐거운 대학생활 (1AU)\n- 신나는 대학생활 (1AU)\n\n총 7학점 및 4AU를 이수해야 합니다.",
+        "timestamp": "2025-09-10T17:01:43.526245",
+        "sources": [
+          "KAIST_Bachelor_degree_requirements.pdf (페이지 1)",
+          "KAIST_Bachelor_degree_requirements.pdf (페이지 8)",
+          "KAIST_Bachelor_degree_requirements.pdf (페이지 6)"
+        ]
+      },
+      {
+        "role": "user",
+        "content": "Please tell me about the liberal arts course requirements for international students. Answer in English.",
+        "timestamp": "2025-09-10T17:03:02.492520",
+        "sources": []
+      },
+      {
+        "role": "assistant",
+        "content": "The liberal arts course requirements for international students include the following:\n\n1. **English Course Requirement**: International students must complete 4 credits in English. This requirement can be waived for students who are native English speakers or who have completed their high school education in English, in which case they are awarded an 'S' grade. The specific waiver conditions may vary depending on the year of admission, with different rules for students admitted after 2013, those admitted after 2011, and those admitted before 2010.\n\n2. **Korean Language Courses**: International students are required to complete 6 credits in Korean language courses. The specific courses depend on the year of admission. For students admitted before the 2019 fall semester, \"Korean 1\" and \"Korean 2\" courses are required, each worth 3 credits. For students admitted from the fall semester of 2019 onwards, \"Korean 3\" and \"Korean 4\" courses are required, each also worth 3 credits. Starting from the spring semester of 2025, new international students must complete an \"Online Korean Language Camp\" before admission or a \"Korean Language Camp\" during their first winter vacation after admission to be eligible to take \"Korean 3.\"\n\n3. **Exemption from Essay Writing Courses**: International students are exempt from the mandatory essay writing courses that are part of the liberal arts requirements.\n\n4. **Humanities and Social Sciences Electives**: International students are required to complete at least 21 credits in humanities and social sciences electives. This includes courses from at least two of the three areas (humanities, social sciences, literature, and arts), with at least one course (3 credits) being a core course. The definition of core, fusion, and general courses may vary, and there are specific rules for students who are enrolled in a double major or who were admitted in different years. Students admitted in the academic years 2007-2010 have additional requirements regarding English-taught courses as part of their humanities and social sciences electives.\n\nThese requirements ensure that international students engage with both global and Korean cultures and languages, enhancing their educational experience.",
+        "timestamp": "2025-09-10T17:03:15.580316",
+        "sources": [
+          "KAIST_Bachelor_degree_requirements.pdf (페이지 6)",
+          "KAIST_Bachelor_degree_requirements.pdf (페이지 3)",
+          "KAIST_Bachelor_degree_requirements.pdf (페이지 6)"
+        ]
+      }
+    ],
+    "created_at": "2025-09-10T17:01:10.659399",
+    "updated_at": "2025-09-10T17:03:15.580316"
+  },
+  {
+    "session_id": "83337b70-642d-408e-91d6-c60dbb1470fc",
+    "name": "세션 2",
+    "messages": [],
+    "created_at": "2025-09-10T17:03:31.210151",
+    "updated_at": "2025-09-10T17:03:31.210151"
+  }
+]
