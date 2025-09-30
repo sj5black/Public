@@ -435,6 +435,7 @@ $ git commit -m "Update"  # 깃허브 저장
 
 ## 8. 프로젝트 구성 파일
 
+터미널에 tree 명령어를 실행하면..
 ```
 my_rag_project/
 ├─ README.md        ← 프로젝트 설명
@@ -475,6 +476,8 @@ my_rag_project/
 |------|------|
 | GET /users | 사용자 목록 조회 |
 | POST /users | 새 사용자 생성 |
+| PUT /users/{id} | 특정 사용자정보 전체 수정(덮어쓰기) |
+| DELETE /users/{id} | 특정 사용자정보 삭제 |
 
 ### Python API 호출 예시
 ```python
@@ -486,21 +489,5 @@ print("상태 코드:", res.status_code)
 print("데이터:", res.json())
 ```
 
----
-
-# ✅ 최종 요약
-
-1. **웹 구조**: 프론트엔드 ↔ 백엔드 ↔ DB  
-2. **웹 개발 방식**: HTML / Streamlit / React (예시코드 포함)  
-3. **백엔드 언어 비교**: C, C++, Java, Python  
-4. **정렬 알고리즘 비교**: Python은 단 한 줄로 해결  
-5. **파이썬 기초**: 변수, 자료형, 조건문, 반복문, 함수 (쉬운 예시 포함)  
-6. **RAG 챗봇**: 검색 + 생성  
-7. **VS Code & 터미널**: 필수 개발 도구  
-8. **프로젝트 파일**: README, requirements, .env, .gitignore  
-9. **깃허브**: 협업 필수  
-10. **RESTful API와 Python API 호출**
-
----
 
 
