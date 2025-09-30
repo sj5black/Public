@@ -1,49 +1,26 @@
 [
   {
-    "session_id": "79efe597-670a-43b7-b26a-ad270f79e660",
+    "session_id": "645e32e3-72a4-49ae-b867-fd1dff73f35e",
     "name": "세션 1",
     "messages": [
       {
         "role": "user",
-        "content": "23학년도 입학생이 이수해야할 교양필수 과목을 알려주세요.",
-        "timestamp": "2025-09-10T17:01:36.334287",
+        "content": "스마트 물류플랫폼에 대해 알려줘",
+        "timestamp": "2025-09-29T15:30:32.179973",
         "sources": []
       },
       {
         "role": "assistant",
-        "content": "2023학년도 입학생이 이수해야 할 교양필수 과목은 다음과 같습니다:\n\n- English Presentation & Discussion (1AU)\n- Advanced English Listening (1AU)\n- Advanced English Reading (1AU)\n- Advanced English Writing (1AU)\n- 논술 (3학점)\n- 인성/리더십 (2AU)\n- 즐거운 대학생활 (1AU)\n- 신나는 대학생활 (1AU)\n\n총 7학점 및 4AU를 이수해야 합니다.",
-        "timestamp": "2025-09-10T17:01:43.526245",
+        "content": "스마트 물류플랫폼 AI 챗봇은 기업 자료를 바탕으로 한 인공지능(AI) 사전 학습 시스템입니다. 이 플랫폼은 물류 업계에 혁신적인 가치를 제공하며, 주요 성과로는 한국어 최적화, GPU 가속을 통한 고성능 문서 검색 및 응답 생성, 다양한 응용 분야에서의 적용이 있습니다. 이를 통해 효율적인 고객 서비스, 가속화된 정보 검색, 공유 로지스틱스 최적화 및 디지털 통합을 가능하게 합니다. 프로젝트 목표에는 스마트 물류 및 녹색 기술 분야의 전문 문서 분석, 한국어로 최적화된 AI 기반 Q&A 시스템 구축, 고성능 문서 검색 및 응답 생성이 포함됩니다. 적용 영역으로는 스마트 물류플랫폼, 로지스틱스 운영 시스템, 공유 로지스틱스 센터, 디지털 통합 운영 플랫폼 등이 있습니다.\n\n스마트 물류플랫폼 AI 챗봇의 미래 발전 방향은 지속적인 개발 및 개선을 통해 더욱 향상된 서비스 제공이 가능하며, 개발 일정은 현재 기술 팀의 우선순위 및 리소스에 따라 달라질 수 있습니다. 단기적으로는 다양한 로지스틱스 도메인의 기업 자료 확장, 한국어 자연어 처리 알고리즘 개선, 응답 정확도 및 속도 향상 등을 목표로 합니다. 중기적으로는 다국어 지원 기능 추가, 로지스틱스 AI 전문가 시스템과의 통합, 사용자 맞춤형 응답 개발 등을 추진합니다. 장기적으로는 로지스틱스 프로세스 자동화, 예측형 AI 기능 도입, 글로벌 시장 확장 등을 계획하고 있습니다.",
+        "timestamp": "2025-09-29T15:30:48.947522",
         "sources": [
-          "KAIST_Bachelor_degree_requirements.pdf (페이지 1)",
-          "KAIST_Bachelor_degree_requirements.pdf (페이지 8)",
-          "KAIST_Bachelor_degree_requirements.pdf (페이지 6)"
-        ]
-      },
-      {
-        "role": "user",
-        "content": "Please tell me about the liberal arts course requirements for international students. Answer in English.",
-        "timestamp": "2025-09-10T17:03:02.492520",
-        "sources": []
-      },
-      {
-        "role": "assistant",
-        "content": "The liberal arts course requirements for international students include the following:\n\n1. **English Course Requirement**: International students must complete 4 credits in English. This requirement can be waived for students who are native English speakers or who have completed their high school education in English, in which case they are awarded an 'S' grade. The specific waiver conditions may vary depending on the year of admission, with different rules for students admitted after 2013, those admitted after 2011, and those admitted before 2010.\n\n2. **Korean Language Courses**: International students are required to complete 6 credits in Korean language courses. The specific courses depend on the year of admission. For students admitted before the 2019 fall semester, \"Korean 1\" and \"Korean 2\" courses are required, each worth 3 credits. For students admitted from the fall semester of 2019 onwards, \"Korean 3\" and \"Korean 4\" courses are required, each also worth 3 credits. Starting from the spring semester of 2025, new international students must complete an \"Online Korean Language Camp\" before admission or a \"Korean Language Camp\" during their first winter vacation after admission to be eligible to take \"Korean 3.\"\n\n3. **Exemption from Essay Writing Courses**: International students are exempt from the mandatory essay writing courses that are part of the liberal arts requirements.\n\n4. **Humanities and Social Sciences Electives**: International students are required to complete at least 21 credits in humanities and social sciences electives. This includes courses from at least two of the three areas (humanities, social sciences, literature, and arts), with at least one course (3 credits) being a core course. The definition of core, fusion, and general courses may vary, and there are specific rules for students who are enrolled in a double major or who were admitted in different years. Students admitted in the academic years 2007-2010 have additional requirements regarding English-taught courses as part of their humanities and social sciences electives.\n\nThese requirements ensure that international students engage with both global and Korean cultures and languages, enhancing their educational experience.",
-        "timestamp": "2025-09-10T17:03:15.580316",
-        "sources": [
-          "KAIST_Bachelor_degree_requirements.pdf (페이지 6)",
-          "KAIST_Bachelor_degree_requirements.pdf (페이지 3)",
-          "KAIST_Bachelor_degree_requirements.pdf (페이지 6)"
+          "스마트 물류플랫폼 AI 챗봇.pdf (페이지 16)",
+          "스마트 물류플랫폼 AI 챗봇.pdf (페이지 3)",
+          "스마트 물류플랫폼 AI 챗봇.pdf (페이지 15)"
         ]
       }
     ],
-    "created_at": "2025-09-10T17:01:10.659399",
-    "updated_at": "2025-09-10T17:03:15.580316"
-  },
-  {
-    "session_id": "83337b70-642d-408e-91d6-c60dbb1470fc",
-    "name": "세션 2",
-    "messages": [],
-    "created_at": "2025-09-10T17:03:31.210151",
-    "updated_at": "2025-09-10T17:03:31.210151"
+    "created_at": "2025-09-29T15:30:21.539951",
+    "updated_at": "2025-09-29T15:30:48.947522"
   }
 ]
