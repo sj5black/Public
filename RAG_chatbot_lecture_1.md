@@ -531,12 +531,12 @@ $ git commit -m "Update"  # 깃허브 저장
 
 터미널에 tree 명령어를 실행하면..
 ```
-my_rag_project/
+LLM_Chatbot/
 ├─ README.md        ← 프로젝트 설명
 ├─ requirements.txt ← 필요한 라이브러리 목록
 ├─ .env             ← API 키 등 비밀값
 ├─ .gitignore       ← 무시할 파일 목록
-└─ main.py          ← 실행 파일
+└─ app.py          ← 실행 파일
 ```
 
 - **README.md** → 설명서  
@@ -599,13 +599,13 @@ print("데이터:", res.json())
 
 ## 1. GitHub 프로젝트 준비
 1. **GitHub에서 새 레포지토리 생성**
-   - 이름 예시: `my-first-project`
+   - 이름 예시: `LLM_Chatbot`
    - `README.md`, `.gitignore`는 로컬에서 직접 만들 예정 → 생성 시 체크하지 않음.
 
 2. **로컬에 Clone**
    ```bash
-   git clone https://github.com/<username>/my-first-project.git
-   cd my-first-project
+   git clone https://github.com/<username>/LLM_Chatbot.git
+   cd LLM_Chatbot
    ```
 
 ---
@@ -643,29 +643,25 @@ print("데이터:", res.json())
 
 ---
 
-## 4. Jupyter 환경 세팅
-7. **Jupyter Kernel 설치 (필요 시)**
-   ```bash
-   pip install ipykernel
-   python -m ipykernel install --user --name=myenv
-   ```
+## 4. 환경 세팅
+7. **VSCODE 확장팩(Extension) 설치**
+   - Python
+   - Python Environments
+   - Pylance
+   - Jupyter
+
 
 8. **VS Code에서 `.ipynb` 파일 실행**
-   - VS Code 확장팩: **Python**, **Jupyter** 설치
+   - 코드블록에 커서 놓고 -> Ctrl + Enter
    - 오른쪽 상단에서 **Kernel 선택 → `myenv` 선택**
-
+   - 새 코드블록 생성 : Esc + B
+   - 코드블록 나누기 : Ctrl + Shift + -
 ---
 
 ## 5. 코드 실습
 9. **Notebook 코드 작성**
    ```python
    print("Hello, Python")
-   ```
-
-10. **패키지 import 확인**
-   ```python
-   import numpy as np
-   import pandas as pd
    ```
 
 
