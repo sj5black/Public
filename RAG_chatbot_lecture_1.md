@@ -631,6 +631,9 @@ print("데이터:", res.json())
    ```bash
    conda create -n myenv python=3.11 -y
    conda activate myenv
+
+   # 삭제
+   conda remove -n myenv --all
    ```
 
 6. **의존성 설치**
