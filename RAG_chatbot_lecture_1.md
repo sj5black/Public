@@ -165,10 +165,10 @@ export default Chat;
 
 | 언어 | 특징 | 장점 | 단점 | 주요 쓰임새 |
 |------|------|------|------|-------------|
-| **C** | 저수준 언어,<br>시스템 제어 가능 | 빠른 실행 속도,<br>하드웨어 제어 | 문법이 복잡<br>생산성 낮음 | 운영체제, 임베디드 |
-| **C++** | C 기반 객체지향 언어 | 성능 + 객체지향,<br>대규모 프로젝트에 강함 | 러닝커브 높음<br>복잡성 | 게임 엔진, 그래픽 |
-| **Java** | JVM 기반 범용 언어 | 플랫폼 독립적, 안정적 | 속도가 C/C++보다 느림 | 기업용 서버, 안드로이드 앱 |
-| **Python** | 간결한 문법,<br>인터프리터 언어 | 배우기 쉽고 라이브러리 풍부 | 실행속도 느림 | AI, 데이터 과학, 웹서버 |
+| **C** | 최저수준 절차지향 언어<br>시스템 제어 가능 | 빠른 실행 속도,<br>하드웨어 제어 | 문법이 복잡<br>생산성 낮음 | 운영체제, 임베디드, 우주 탐사선 |
+| **C++** | C 기반 객체지향 언어 | 성능 + 객체지향,<br>대규모 프로젝트에 강함 | 러닝커브 높음<br>복잡성 | 게임 개발 |
+| **Java** | JVM 기반 범용 언어 | 플랫폼 독립적, 안정적 | 속도가 C/C++보다 느림 | 금융권, 공공기관 등 대규모 서비스 |
+| **Python** | 인터프리터 언어 | 간결한 문법<br>빠른 개발<br>AI 관련 다양한 라이브러리 | 실행속도 느림<br>메모리 사용량 많음 | AI, 데이터 과학, 영상/이미지 처리 |
 
 ---
 
@@ -556,14 +556,24 @@ my_rag_project/
 
 ## 10. API와 RESTful API
 
-### API
-- 프로그램끼리 대화하는 규칙  
-- 비유: 식당 메뉴판을 보고 주문하면 주방이 처리  
+### API (Application Programming Interface)
+- 프로그램끼리 통신할 수 있는 규약(인터페이스)
+- 예: 라이브러리 API, 운영체제 API, 웹 API 등
 
-### RESTful API
+### Web API → API의 한 분야
+- 인터넷(HTTP 프로토콜)을 통해 다른 프로그램과 데이터를 주고받는 API
+- 예: OpenAI API, Google Maps API
+
+### RESTful API→ Web API 구현 방식 중 하나
+- REST (Representational State Transfer) 라는 아키텍처 스타일을 따르는 Web API
+
+- 규칙을 지켜서 설계된 API를 RESTful API라고 부름
+
+#### RESTful API 특징(규칙)
 - 자원(Resource): URI로 표현 (`/users`)  
 - 행위(Method): HTTP 메서드로 정의 (GET/POST/PUT/DELETE)  
-- 표현(Representation): JSON 형식 응답  
+- 표현(Representation): JSON 형식 응답
+- 무상태성(Stateless): 서버는 클라이언트 상태를 기억하지 않음 → 요청마다 필요한 정보 포함해야 함  
 
 #### 예시 요청
 | 요청 | 의미 |
@@ -573,7 +583,7 @@ my_rag_project/
 | PUT /users/{id} | 특정 사용자정보 전체 수정(덮어쓰기) |
 | DELETE /users/{id} | 특정 사용자정보 삭제 |
 
-### Python API 호출 예시
+### RESTful API 호출 예시
 ```python
 import requests
 
