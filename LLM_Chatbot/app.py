@@ -132,8 +132,30 @@ def load_documents(uploaded_files):
                 loader = PyPDFLoader(tmp_file_path)
                 docs = loader.load()
             elif uploaded_file.name.endswith('.txt'):
-                loader = TextLoader(tmp_file_path, encoding='utf-8')
-                docs = loader.load()
+                # 여러 인코딩을 시도해보기
+                encodings = ['utf-8', 'cp949', 'euc-kr', 'latin-1']
+                docs = None
+                
+                for encoding in encodings:
+                    try:
+                        # 파일이 실제로 존재하는지 확인
+                        if not os.path.exists(tmp_file_path):
+                            st.error(f"임시 파일이 생성되지 않았습니다: {tmp_file_path}")
+                            break
+                            
+                        loader = TextLoader(tmp_file_path, encoding=encoding)
+                        docs = loader.load()
+                        st.success(f"파일 '{uploaded_file.name}'을 {encoding} 인코딩으로 성공적으로 로드했습니다.")
+                        break
+                    except UnicodeDecodeError:
+                        continue
+                    except Exception as e:
+                        st.warning(f"인코딩 {encoding}으로 파일을 읽을 수 없습니다: {e}")
+                        continue
+                
+                if docs is None:
+                    st.error(f"파일 '{uploaded_file.name}'의 인코딩을 인식할 수 없습니다.")
+                    continue
             else:
                 st.warning(f"지원하지 않는 파일 형식: {uploaded_file.name}")
                 continue
