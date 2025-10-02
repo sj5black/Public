@@ -1,11 +1,11 @@
 # 📚 RAG 문서 챗봇
 
-GPT-5와 RAG(Retrieval Augmented Generation)를 활용한 문서 기반 챗봇입니다.
+GPT-4 turbo와 RAG(Retrieval Augmented Generation)를 활용한 문서 기반 챗봇입니다.
 
 ## ✨ 주요 기능
 
 - 📄 **다중 문서 지원**: PDF, TXT 파일 업로드 및 처리
-- 🤖 **GPT-5 기반 대화**: 최신 GPT-5 모델을 활용한 정확한 답변
+- 🤖 **GPT-4 turbo 기반 대화**: GPT-4 turbo 모델을 활용한 정확한 답변
 - 📚 **출처 표기**: 답변에 대한 정확한 출처 문서 및 페이지 정보 제공
 - 💬 **세션 관리**: 여러 대화 세션 생성, 저장, 불러오기
 - 🔍 **유사도 검색**: 벡터 기반 문서 검색으로 관련성 높은 정보 제공
@@ -27,7 +27,7 @@ streamlit run app.py
 ### 3. OpenAI API 키 설정
 
 - 웹 인터페이스의 사이드바에서 OpenAI API 키 입력
-- GPT-5 모델 사용을 위해 유효한 API 키 필요
+- GPT-4 turbo 모델 사용을 위해 유효한 API 키 필요
 
 ## 📖 사용 방법
 
@@ -38,7 +38,7 @@ streamlit run app.py
 
 ### 2. 채팅 시작
 1. 메인 화면 하단의 채팅 입력창에 질문 입력
-2. 업로드한 문서 내용을 기반으로 GPT-5가 답변 생성
+2. 업로드한 문서 내용을 기반으로 GPT-4 turbo가 답변 생성
 3. 답변과 함께 출처 정보 자동 표시
 
 ### 3. 세션 관리
@@ -50,7 +50,7 @@ streamlit run app.py
 ## 🔧 기술 스택
 
 - **Frontend**: Streamlit
-- **LLM**: OpenAI GPT-5
+- **LLM**: OpenAI GPT-4 turbo
 - **RAG Framework**: LangChain
 - **Vector Store**: FAISS
 - **Embeddings**: OpenAI text-embedding-3-small
@@ -76,9 +76,9 @@ streamlit run app.py
 - **검색 결과 수**: 3개 문서
 - **유사도 검색**: FAISS 벡터 스토어 기반
 
-### GPT-5 모델 설정
+### GPT-4 turbo 모델 설정
 - **Temperature**: 0.7
-- **모델**: gpt-5
+- **모델**: GPT-4 turbo
 - **메모리**: ConversationBufferMemory
 
 ## 🎯 사용 예시
@@ -103,7 +103,7 @@ streamlit run app.py
 
 ## ⚠️ 주의사항
 
-- GPT-5 모델 사용 시 OpenAI API 사용료 발생
+- GPT-4 turbo 모델 사용 시 OpenAI API 사용료 발생
 - 대용량 문서 처리 시 시간이 소요될 수 있음
 - 인터넷 연결 필요 (OpenAI API 호출)
 

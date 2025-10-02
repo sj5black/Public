@@ -1,31 +1,24 @@
 [
   {
-    "session_id": "d4365a99-7fb6-4aa4-bc67-52944eeddce0",
+    "session_id": "2cabb426-0bdd-40a6-952e-6a43d9dcdaf0",
     "name": "세션 1",
-    "messages": [],
-    "created_at": "2025-10-02T16:36:05.259508",
-    "updated_at": "2025-10-02T16:36:05.259508"
-  },
-  {
-    "session_id": "08092ac2-df82-4b7e-88a5-0f708be24c8d",
-    "name": "세션 2",
     "messages": [
       {
         "role": "user",
-        "content": "requirements.txt 에 있는 내용을 보여줘",
-        "timestamp": "2025-10-02T16:48:56.620521",
+        "content": "requirements.txt 의 내용을 보여줘",
+        "timestamp": "2025-10-02T17:11:12.973424",
         "sources": []
       },
       {
         "role": "assistant",
-        "content": "requirements.txt 파일에는 다음과 같은 내용이 포함되어 있습니다:\n\n```\n# Core web frameworks\nstreamlit==1.49.1\nfastapi==0.103.2\nuvicorn==0.22.0\n\n# HTTP client\nrequests==2.32.5\n\n# Data processing\npandas==2.3.2\n\n# Environment variables\npython-dotenv==1.1.1\n\n# RAG and AI (LangChain ecosystem)\nlangchain==0.3.27\nlangchain-community==0.3.29\nlangchain-openai==0.3.33\n\n# Vector database\nfaiss-cpu==1.12.0\n\n# Jupyter\nipykernel==6.30.1\n\n# Async support for Jupyter\nnest-asyncio==1.6.0\n```",
-        "timestamp": "2025-10-02T16:49:02.946012",
+        "content": "requirements.txt 파일의 내용은 다음과 같습니다:\n\n```\n# Core web frameworks\nstreamlit==1.49.1\nfastapi==0.103.2\nuvicorn==0.22.0\n\n# HTTP client\nrequests==2.32.5\n\n# Data processing\npandas==2.3.2\n\n# Environment variables\npython-dotenv==1.1.1\n\n# RAG and AI (LangChain ecosystem)\nlangchain==0.3.27\nlangchain-community==0.3.29\nlangchain-openai==0.3.33\n\n# Vector database\nfaiss-cpu==1.12.0\n\n# Jupyter\nipykernel==6.30.1\n\n# Async support for Jupyter\nnest-asyncio==1.6.0\n```",
+        "timestamp": "2025-10-02T17:11:18.452010",
         "sources": [
           "requirements.txt"
         ]
       }
     ],
-    "created_at": "2025-10-02T16:48:33.594309",
-    "updated_at": "2025-10-02T16:49:02.946012"
+    "created_at": "2025-10-02T17:11:04.814566",
+    "updated_at": "2025-10-02T17:11:18.452010"
   }
 ]
