@@ -593,5 +593,76 @@ print("상태 코드:", res.status_code)
 print("데이터:", res.json())
 ```
 
+<br><br>
+
+# GitHub + Conda + VS Code 실습 가이드
+
+## 1. GitHub 프로젝트 준비
+1. **GitHub에서 새 레포지토리 생성**
+   - 이름 예시: `my-first-project`
+   - `README.md`, `.gitignore`는 로컬에서 직접 만들 예정 → 생성 시 체크하지 않음.
+
+2. **로컬에 Clone**
+   ```bash
+   git clone https://github.com/<username>/my-first-project.git
+   cd my-first-project
+   ```
+
+---
+
+## 2. 프로젝트 초기 설정
+3. **기본 파일 생성**
+   - `README.md` : 프로젝트 설명
+   - `.gitignore` : Python, Jupyter 관련 템플릿
+   - `.env` : 환경변수 예시 파일
+   - `requirements.txt` : 의존성 모듈 리스트
+
+4. **Git add/commit/push**
+   ```bash
+   git add .
+   git commit -m "Add project base files"
+   git push origin main
+   ```
+
+---
+
+## 3. 가상환경 & 패키지 설치
+5. **conda로 가상환경 생성**
+   ```bash
+   conda create -n myenv python=3.11 -y
+   conda activate myenv
+   ```
+
+6. **의존성 설치**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+---
+
+## 4. Jupyter 환경 세팅
+7. **Jupyter Kernel 설치 (필요 시)**
+   ```bash
+   pip install ipykernel
+   python -m ipykernel install --user --name=myenv
+   ```
+
+8. **VS Code에서 `.ipynb` 파일 실행**
+   - VS Code 확장팩: **Python**, **Jupyter** 설치
+   - 오른쪽 상단에서 **Kernel 선택 → `myenv` 선택**
+
+---
+
+## 5. 코드 실습
+9. **Notebook 코드 작성**
+   ```python
+   print("Hello, Python")
+   ```
+
+10. **패키지 import 확인**
+   ```python
+   import numpy as np
+   import pandas as pd
+   ```
 
 
