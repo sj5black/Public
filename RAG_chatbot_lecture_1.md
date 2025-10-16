@@ -536,7 +536,7 @@ LLM_Chatbot/
 ├─ requirements.txt ← 필요한 라이브러리 목록
 ├─ .env             ← API 키 등 비밀값
 ├─ .gitignore       ← 무시할 파일 목록
-└─ app.py          ← 실행 파일
+└─ app.py           ← 실행 파일
 ```
 
 - **README.md** → 설명서  
