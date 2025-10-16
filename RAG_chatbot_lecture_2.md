@@ -258,3 +258,33 @@ const handleSubmit = async (e) => {
 Python은 인공지능 분야에서 TensorFlow와 PyTorch 같은 라이브러리를 통해
 모델 학습과 연구를 빠르게 수행할 수 있도록 지원합니다.
 ```
+<br>
+
+## ConversationalRetrievalChain 의 내부 구조
+
+```py
+class ConversationalRetrievalChain:
+    def __call__(self, inputs):
+        # 1. 입력 전처리
+        # 2. retriever로 문서 검색
+        # 3. LLM에 질문 + 검색된 문서 전달
+        # 4. 메모리에 대화 저장
+        # 5. 결과 반환
+        return {"answer": ..., "source_documents": ...}
+```
+
+#### 예시
+```py
+class MyCallableClass:
+    def __init__(self, name):
+        self.name = name
+    
+    def __call__(self, message):
+        return f"{self.name} says: {message}"
+
+# 객체 생성
+my_obj = MyCallableClass("Bot")
+
+# 함수처럼 호출 가능!
+result = my_obj("Hello!")  # "Bot says: Hello!"
+```

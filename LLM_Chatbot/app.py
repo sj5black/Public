@@ -117,6 +117,7 @@ def create_new_session():
     save_sessions()
     return session_id
 
+# 1. 데이터 로드
 def load_documents(uploaded_files):
     """업로드된 파일들을 문서로 변환"""
     documents = []
@@ -175,12 +176,13 @@ def load_documents(uploaded_files):
     
     return documents
 
+# 2 to 4. 데이터 분할 + 임베딩 + 벡터DB 저장
 def create_vectorstore(documents):
     """문서들로부터 벡터 스토어 생성"""
     if not documents:
         return None
     
-    # 텍스트 분할
+    # 2. 텍스트 분할
     text_splitter = RecursiveCharacterTextSplitter(
         chunk_size=1000,
         chunk_overlap=200,
@@ -189,14 +191,15 @@ def create_vectorstore(documents):
     
     chunks = text_splitter.split_documents(documents)
     
-    # 임베딩 생성
+    # 3. 임베딩 생성
     embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
     
-    # FAISS 벡터 스토어 생성
+    # 4. FAISS 벡터 스토어 생성 후 저장
     vectorstore = FAISS.from_documents(chunks, embeddings)
     
     return vectorstore
 
+# 5. LangChain 생성
 def create_conversation_chain(vectorstore, openai_api_key):
     """대화형 검색 체인 생성"""
     if not vectorstore:
