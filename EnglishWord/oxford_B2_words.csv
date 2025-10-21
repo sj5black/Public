@@ -64,7 +64,7 @@ behavior,n.,"행동, 태도",His behavior really surprised everyone.
 belief,n.,"믿음, 신념",It’s my belief that honesty always wins.
 belongings,n.,소지품,Don’t leave your belongings unattended.
 bend,v.,구부리다,Bend your knees when you lift something heavy.
-beneath,prep.,~아래에,The keys were hidden beneath the pillow.
+beneath,prep.,~바로 아래에,The keys were hidden beneath the pillow.
 beneficial,adj.,유익한,Regular exercise is beneficial to your health.
 bet,v.,"내기하다, 장담하다",I bet he’s going to be late again.
 beyond,prep.,~을 넘어서,The town lies just beyond the river.
@@ -143,7 +143,7 @@ charge,v.,"청구하다, 요금을 부과하다",They charged me $10 for deliver
 charity,n.,자선 단체,She donates a lot of money to charity.
 chart,n.,도표,The chart shows sales growth this year.
 chase,v.,"쫓다, 추격하다",The dog chased the ball across the yard.
-chat,v.,잡담하다,We chatted for hours over coffee.
+chat,v.,"잡담하다, 수다떨다",We chatted for hours over coffee.
 cheap,adj.,값싼,This bag looks nice but it’s really cheap.
 check,v.,확인하다,Please check your email for details.
 cheer,v.,응원하다,The crowd cheered loudly for their team.
@@ -152,7 +152,7 @@ chemist,n.,약사; 화학자,The chemist mixed the solution carefully.
 chew,v.,씹다,Chew your food slowly for better digestion.
 chief,adj.,주요한,The chief reason for the delay was bad weather.
 childhood,n.,어린 시절,I spent my childhood in a small town.
-chin,n.,턱,He rested his chin on his hand.
+chin,n.,턱끝,He rested his chin on his hand.
 choice,n.,선택,You made the right choice.
 chop,v.,자르다,Chop the onions before frying them.
 church,n.,교회,We go to church every Sunday morning.
@@ -166,7 +166,7 @@ classical,adj.,고전적인,He prefers classical music to pop.
 clerk,n.,점원,The store clerk helped me find my size.
 client,n.,고객,We have a meeting with an important client today.
 climate,n.,기후,The climate here is warm and humid.
-climb,v.,오르다,They climbed to the top of the mountain.
+climb,v.,(산을) 오르다,They climbed to the top of the mountain.
 closet,n.,벽장,She hung her clothes neatly in the closet.
 cloth,n.,천,Wipe the table with a clean cloth.
 clothing,n.,의류,This store sells outdoor clothing.
@@ -235,7 +235,7 @@ construct,v.,"건설하다, 구성하다",They’re constructing a new bridge do
 construction,n.,건설,The construction will be finished next year.
 consumer,n.,소비자,Consumers are demanding higher-quality products.
 contact,v.,연락하다,Please contact me if you have any questions.
-container,n.,용기,Store the food in an airtight container.
+container,n.,"용기, 컨테이너",Store the food in an airtight container.
 contemporary,adj.,"현대의, 동시대의",I prefer contemporary art to classical art.
 content,n.,내용,The book’s content is easy to understand.
 contest,n.,"경연, 대회",She entered a singing contest.
@@ -248,7 +248,7 @@ contribute,v.,기여하다,Everyone should contribute to the group project.
 contribution,n.,"기여, 공헌",Her contribution to the team was invaluable.
 control,v.,통제하다,You need to control your temper.
 convenient,adj.,편리한,Online shopping is very convenient.
-conversation,n.,대화,We had a deep conversation about life.
+conversation,n.,"대화,담소,이야기",We had a deep conversation about life.
 convert,v.,변환하다,You can convert dollars into euros here.
 convince,v.,설득하다,He convinced me to try something new.
 cook,v.,요리하다,I love to cook Italian food.
@@ -304,7 +304,6 @@ current,adj.,현재의,What’s your current job?
 currently,adv.,현재,She’s currently living in New York.
 curve,n.,곡선,The road has a sharp curve ahead.
 custom,n.,"관습, 풍습",It’s a local custom to take off your shoes indoors.
-customer,n.,고객,The customer asked for a refund.
 cycle,n.,"순환, 주기",The water cycle is part of nature.
 daily,adj.,매일의,I check my email on a daily basis.
 damage,v.,손상시키다,The storm damaged several buildings.
@@ -326,7 +325,7 @@ decline,v.,"감소하다, 거절하다",His health has declined recently.
 decorate,v.,장식하다,We decorated the house for Christmas.
 decoration,n.,장식,The room looks lovely with all the decorations.
 decrease,v.,감소하다,The temperature decreased overnight.
-deeply,adv.,깊이,I’m deeply grateful for your help.
+deeply,adv.,깊이있게,I’m deeply grateful for your help.
 defeat,v.,패배시키다,Our team defeated their rivals easily.
 defend,v.,방어하다,Soldiers must defend their country.
 defense,n.,방어,The castle’s defense was very strong.
@@ -364,7 +363,7 @@ development,n.,발전,There’s been a lot of development in AI recently.
 device,n.,장치,This device helps track your sleep.
 diagram,n.,도표,The diagram shows how the system works.
 dial,v.,전화를 걸다,I accidentally dialed the wrong number.
-dialogue,n.,대화,The movie has very realistic dialogue.
+dialogue,n.,"대화,대사",The movie has very realistic dialogue.
 diary,n.,일기,I write in my diary every night.
 dictionary,n.,사전,Look up the word in the dictionary.
 diet,n.,식단,He’s on a strict diet to lose weight.
@@ -446,7 +445,7 @@ efficiently,adv.,효율적으로,The system works more efficiently after the upd
 either,det./pron.,(둘 중) 어느 하나,You can choose either coffee or tea.
 elbow,n.,팔꿈치,He accidentally hit his elbow on the table.
 elderly,adj.,나이 든,The bus has special seats for elderly passengers.
-electric,adj.,전기의,We bought an electric car last month.
+electric,adj.,전기를 사용하는,We bought an electric car last month.
 electrical,adj.,전기의,Be careful when handling electrical equipment.
 electricity,n.,전기,The storm caused a power cut and we lost electricity.
 electronic,adj.,전자식의,I prefer reading e-books on an electronic device.
@@ -474,7 +473,7 @@ engaged,adj.,약혼한; 몰두한,She’s engaged to be married next summer.
 engineering,n.,공학,She’s studying civil engineering at university.
 enhance,v.,향상시키다,Reading daily can enhance your vocabulary.
 enjoyable,adj.,즐거운,The concert was really enjoyable.
-enormous,adj.,거대한,The elephant looked enormous up close.
+enormous,adj.,막대한,The elephant looked enormous up close.
 enough,adv.,충분히,You didn’t study enough for the test.
 ensure,v.,보장하다,Double-check to ensure everything is correct.
 entertain,v.,즐겁게 하다,He entertained the guests with his jokes.
@@ -593,7 +592,7 @@ govern,v.,통치하다,The country is governed by a new administration.
 government,n.,정부,The government announced new tax reforms.
 grade,n.,성적,He got good grades in all his subjects.
 gradually,adv.,점차,The pain gradually went away.
-grain,n.,곡물,This bread is made from whole grains.
+grain,n.,곡식,This bread is made from whole grains.
 grand,adj.,웅장한,The hotel has a grand lobby with chandeliers.
 grant,v.,허가하다,The school granted him permission to leave early.
 grass,n.,풀,Kids were playing on the grass.
@@ -691,22 +690,22 @@ initial,adj.,처음의,The initial results look promising.
 initiative,n.,"주도권, 계획",She took the initiative to organize the meeting.
 injure,v.,다치게 하다,He injured his leg while playing soccer.
 injury,n.,부상,The player suffered a serious knee injury.
-inner,adj.,내부의,She found peace in her inner self.
+inner,adj.,내면의,She found peace in her inner self.
 innocent,adj.,"무죄의, 순진한",He was found innocent of all charges.
 innovation,n.,혁신,The company values creativity and innovation.
 innovative,adj.,혁신적인,They designed an innovative new product.
 inquire,v.,문의하다,I called to inquire about the job position.
 inquiry,n.,"질문, 조사",The police are conducting an inquiry into the case.
-inside,n.,안쪽,The inside of the house was beautifully decorated.
+inside,n.,내부,The inside of the house was beautifully decorated.
 insist,v.,주장하다,He insisted that he was telling the truth.
 inspection,n.,"점검, 검사",The building passed the safety inspection.
 inspire,v.,영감을 주다,Her story inspired many young writers.
 install,v.,설치하다,They installed new lights in the office.
-instance,n.,사례,"In this instance, I think you’re right."
+instance,n.,"사례, 경우","In this instance, I think you’re right."
 instant,adj.,"즉석의, 즉각적인","I need an instant answer, please."
 instead,adv.,대신에,Let’s stay home instead of going out.
-institute,n.,"기관, 연구소",He studied at a famous research institute.
-institution,n.,"기관, 제도",Universities are important educational institutions.
+institute,n.,"전문 기관, 연구소",He studied at a famous research institute.
+institution,n.,"공공 기관, 제도",Universities are important educational institutions.
 instruction,n.,"지시, 설명",Follow the instructions carefully.
 instrument,n.,"악기, 도구",She plays several musical instruments.
 insurance,n.,보험,Do you have health insurance?
