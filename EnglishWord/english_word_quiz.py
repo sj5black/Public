@@ -1,3 +1,7 @@
+"""
+Import-Csv -Path ".\oxford_C1_words.csv" | Select-Object -ExpandProperty entry > ".\entry_list.txt"
+oxford_C1_words.csv 파일의 entry 컬럼값을 추출해서 entry_list.txt 파일에 저장
+"""
 import csv
 import random
 import os
@@ -19,6 +23,8 @@ def load_words(difficulty):
     """선택한 난이도에 맞는 CSV 파일을 로드"""
     if difficulty == 'challenge':
         filename = "oxford_challenge_words.csv"
+    elif difficulty == 'under_B2':
+        filename = "oxford_under_B2_words.csv"
     else:
         filename = f"oxford_{difficulty}_words.csv"
     
@@ -205,27 +211,30 @@ def main():
     
     while True:
         print("\n난이도를 선택하세요:")
-        print("1. B2 (중상급)")
-        print("2. C1 (고급)")
-        print("3. C2 (최상급)")
-        print("4. Challenge (도전)")
-        print("5. 종료")
+        print("1. Under B2 (초중급)")
+        print("2. B2 (중상급)")
+        print("3. C1 (고급)")
+        print("4. C2 (최상급)")
+        print("5. Challenge (도전)")
+        print("6. 종료")
         
-        choice = input("\n선택 (1-5): ").strip()
+        choice = input("\n선택 (1-6): ").strip()
         
         if choice == '1':
-            difficulty = 'B2'
+            difficulty = 'under_B2'
         elif choice == '2':
-            difficulty = 'C1'
+            difficulty = 'B2'
         elif choice == '3':
-            difficulty = 'C2'
+            difficulty = 'C1'
         elif choice == '4':
-            difficulty = 'challenge'
+            difficulty = 'C2'
         elif choice == '5':
+            difficulty = 'challenge'
+        elif choice == '6':
             print("\n프로그램을 종료합니다. 공부하느라 수고하셨습니다!")
             break
         else:
-            print("\n잘못된 입력입니다. 1-5 중에서 선택해주세요.")
+            print("\n잘못된 입력입니다. 1-6 중에서 선택해주세요.")
             continue
         
         # 단어 로드
