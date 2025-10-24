@@ -88,7 +88,7 @@ ambivalent,adj.,"양가감정의, 엇갈린",She felt ambivalent about accepting
 amiable,adj.,"상냥한, 붙임성 있는",The amiable shopkeeper always greeted customers with a warm smile.
 amplify,v.,"증폭하다, 확대하다",The microphone amplified her voice so everyone could hear clearly.
 antithesis,n.,"정반대, 대조",His behavior was the antithesis of what was expected from a professional.
-appease,v.,"달래다, 회유하다",The government tried to appease the protesters with minor concessions.
+appease,v.,"요구를 들어주다, 회유하다",The government tried to appease the protesters with minor concessions.
 articulate,adj.,"분명히 표현하는, 또렷한",She was articulate in expressing her views on environmental policy.
 ascertain,v.,"확인하다, 규명하다",The detective worked to ascertain the facts surrounding the mysterious case.
 astute,adj.,"기민한, 영리한",The astute businessman recognized the potential of the new technology.
@@ -166,7 +166,7 @@ enhance,v.,"향상시키다, 강화하다",The new software will enhance the com
 enigmatic,adj.,"수수께끼 같은, 난해한",The Mona Lisa’s enigmatic smile has puzzled viewers for centuries.
 enmity,n.,"적의, 증오",The enmity between the two families lasted for generations.
 enthrall,v.,"마음을 사로잡다, 매혹하다",The magician’s performance enthralled the audience completely.
-epitome,n.,"전형, 완벽한 본보기",She was the epitome of grace and elegance at the formal event.
+epitome,n.,"본보기",She was the epitome of grace and elegance at the formal event.
 equivocal,adj.,"모호한, 애매한",His equivocal response left everyone confused about his true intentions.
 erudite,adj.,"박식한, 학식 있는",The erudite professor was respected for his vast knowledge.
 eschew,v.,"피하다, 삼가다",She eschewed social media to focus on her academic studies.
@@ -291,7 +291,6 @@ loquacious,adj.,"수다스러운, 말이 많은",The loquacious professor could 
 lucid,adj.,"명쾌한, 명석한","Despite his illness, he had lucid moments when he could communicate well."
 ludicrous,adj.,"어이없는, 터무니없는",The suggestion to solve poverty by printing more money was ludicrous.
 luminous,adj.,"빛나는, 반짝이는",The luminous stars provided guidance for the lost travelers.
-magnanimous,adj.,"도량이 큰, 관대한",The magnanimous winner praised his defeated opponent’s efforts.
 malevolent,adj.,"악의적인, 해로운",The malevolent dictator oppressed his people for decades.
 malleable,adj.,"유연한, 영향을 잘 받는",Gold is malleable and can be shaped into intricate jewelry designs.
 mandate,n.,"명령, 위임",The government received a mandate from voters to implement healthcare reform.
@@ -299,7 +298,7 @@ manifest,adj.,"분명한, 명백한",Her talent was manifest from an early age.
 meager,adj.,"빈약한, 불충분한",The refugees survived on meager rations for months.
 meticulous,adj.,"꼼꼼한, 세심한",The scientist’s meticulous research methodology ensured accurate results.
 mitigate,v.,"완화하다, 줄이다",The new policies were designed to mitigate the effects of climate change.
-mollify,v.,"달래다, 진정시키다",The manager tried to mollify the angry customers with a sincere apology.
+mollify,v.,"누그러뜨리다",The manager tried to mollify the angry customers with a sincere apology.
 morose,adj.,"시무룩한, 뚱한",He became morose after receiving the disappointing news about his application.
 mundane,adj.,"평범한, 재미없는",She was tired of her mundane daily routine and craved adventure.
 mutable,adj.,변하기 쉬운,Human opinions are mutable and can shift over time.
@@ -314,7 +313,7 @@ nonchalant,adj.,"무심한, 태연한",He remained nonchalant despite the chaos 
 nostalgia,n.,"향수, 옛 추억에 대한 그리움",The old photographs filled her with nostalgia for her childhood days.
 notorious,adj.,악명 높은,The notorious criminal was finally captured after years on the run.
 novice,n.,"초보자, 미숙한 사람",The novice driver was nervous about taking the highway for the first time.
-nuance,n.,"미묘한 차이, 뉘앙스",The translator captured every nuance of the original poem’s meaning.
+nuance,n.,"미묘한 차이",The translator captured every nuance of the original poem’s meaning.
 obdurate,adj.,"완고한, 고집 센",The obdurate negotiator refused to compromise on any terms.
 objective,adj.,객관적인,The journalist strived to maintain an objective perspective in her reporting.
 obliterate,v.,"완전히 파괴하다, 지우다",The hurricane obliterated several coastal towns completely.
@@ -327,7 +326,7 @@ ostentatious,adj.,"과시적인, 허세 부리는",The ostentatious display of w
 outlandish,adj.,"이상한, 기괴한",The outlandish fashion choices of the attendees made the event memorable.
 overwhelm,v.,"지나치게 넘치게 하다, 넘치게 하다",The heavy rainfall overwhelmed the small town’s drainage system.
 overwhelming,adj.,"지나치게 많은, 지나치게 강한",The overwhelming success of the new product led to a surge in demand.
-pacify,v.,"진정시키다, 안정시키다",The angry mob was pacified by the soothing words of the negotiator.
+pacify,v.,"진압하다, 안정시키다",The angry mob was pacified by the soothing words of the negotiator.
 pallid,adj.,"창백한, 창백한",The pallor of the patient’s skin indicated a serious illness.
 paradoxical,adj.,"모순적인, 이상한",The paradoxical nature of quantum mechanics baffled even the most brilliant physicists.
 partisan,adj.,"정당적인, 정당파의",The political debate became increasingly partisan.
@@ -426,7 +425,6 @@ transient,adj.,"일시적인, 덧없는",The transient nature of fame became app
 trite,adj.,"진부한, 평범한",The graduation speech was full of trite phrases and clichéd advice.
 truculent,adj.,"공격적인, 반항적인",The truculent customer demanded to speak with the manager immediately.
 turbulent,adj.,"격동의, 혼란스러운",The country experienced a turbulent period of political upheaval.
-ubiquitous,adj.,"도처에 존재하는, 어디에나 있는",Cell phones have become ubiquitous in modern society worldwide.
 unctuous,adj.,"지나치게 아부하는, 기름기 있는",The unctuous salesman’s excessive compliments made customers uncomfortable.
 unprecedented,adj.,"전례 없는, 유례없는",The pandemic created unprecedented challenges for healthcare systems globally.
 vacillate,v.,"흔들리다, 망설이다",She continued to vacillate between the two job offers for weeks.
@@ -442,10 +440,9 @@ ornate,adj.,화려하게 장식된,The ornate cathedral featured elaborate carvi
 orthodox,adj.,"정통의, 전통적인",His orthodox approach to medicine rejected alternative treatments.
 ostensible,adj.,"표면상의, 겉보기의","The ostensible reason for his visit was business, but he had personal motives."
 ostentatious,adj.,"과시하는, 허세 부리는",Her ostentatious jewelry drew attention at the charity gala.
-pacify,v.,"달래다, 진정시키다",The mother tried to pacify her crying baby with gentle rocking.
 palliate,v.,(병을) 완화시키다,The medication helped palliate the patient’s chronic pain.
 palpable,adj.,"명백한, 뚜렷한",The tension in the room was palpable during the heated discussion.
-paradigm,n.,"전형, 모범",The new teaching method represented a paradigm shift in education.
+paradigm,n.,"(체계/사고방식의) 전형적인 모델",The new teaching method represented a paradigm shift in education.
 paradox,n.,"역설, 모순된 말","It’s a paradox that the more choices we have, the harder it becomes to decide."
 paragon,n.,"모범, 귀감",She was considered a paragon of virtue and moral excellence.
 paramount,adj.,"가장 중요한, 최고의",The safety of the passengers was of paramount concern to the airline.

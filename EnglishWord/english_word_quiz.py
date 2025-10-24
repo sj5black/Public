@@ -23,8 +23,8 @@ def load_words(difficulty):
     """선택한 난이도에 맞는 CSV 파일을 로드"""
     if difficulty == 'challenge':
         filename = "oxford_challenge_words.csv"
-    elif difficulty == 'under_B2':
-        filename = "oxford_under_B2_words.csv"
+    elif difficulty == 'A1_to_B1':
+        filename = "oxford_A1_to_B1_words.csv"
     else:
         filename = f"oxford_{difficulty}_words.csv"
     
@@ -62,7 +62,7 @@ def quiz_game(words):
         # 랜덤으로 단어 선택
         word = random.choice(remaining_words)
         
-        print(f"\n[문제 {len(words) - len(remaining_words) + 1}/{len(words)}]")
+        print(f"[문제 {len(words) - len(remaining_words) + 1}/{len(words)}]")
         print(f"한국어 뜻: {word['korean_meaning']} ({word['part_of_speech']})")
         
         # 사용자 답변 입력
@@ -90,7 +90,7 @@ def quiz_game(words):
             # 오답인 경우 목록에 유지 (이미 remaining_words에 남아있음)
         
         # 진행 상황 표시
-        print(f"\n남은 단어: {len(remaining_words)}개")
+        print(f"남은 단어: {len(remaining_words)}개")
         print("-" * 60)
     
     # 최종 결과 표시
@@ -124,21 +124,34 @@ def meaning_quiz_game(words):
         # 랜덤으로 단어 선택
         word = random.choice(remaining_words)
         
-        print(f"\n[문제 {len(words) - len(remaining_words) + 1}/{len(words)}]")
-        print(f"영어 단어: {word['entry']} ({word['part_of_speech']})")
-        print(f"예문: {word['example_sentence']}")
+        print(f"[문제 {len(words) - len(remaining_words) + 1}/{len(words)}]  {word['entry']}\n")
+        # print(f"{word['entry']}\n")
         
         # 5지선다 객관식 보기 생성
         correct_meaning = word['korean_meaning']
         wrong_choices = []
         
-        # 다른 단어들의 뜻을 랜덤으로 선택하여 오답 보기 생성
-        other_words = [w for w in words if w['korean_meaning'] != correct_meaning]
-        if len(other_words) >= 4:
-            wrong_choices = random.sample([w['korean_meaning'] for w in other_words], 4)
+        # 같은 품사를 가진 다른 단어들의 뜻을 랜덤으로 선택하여 오답 보기 생성
+        # 품사가 콤마로 구분된 경우 처리
+        word_pos = word['part_of_speech']
+        if ',' in word_pos:
+            # 콤마로 구분된 품사들 중 하나라도 포함된 단어들 찾기
+            pos_list = [pos.strip() for pos in word_pos.split(',')]
+            same_pos_words = [w for w in words if w['korean_meaning'] != correct_meaning and any(pos in w['part_of_speech'] for pos in pos_list)]
         else:
-            # 단어가 부족한 경우 중복 허용
-            wrong_choices = [random.choice([w['korean_meaning'] for w in other_words]) for _ in range(4)]
+            # 단일 품사인 경우
+            same_pos_words = [w for w in words if w['korean_meaning'] != correct_meaning and w['part_of_speech'] == word_pos]
+        
+        if len(same_pos_words) >= 4:
+            wrong_choices = random.sample([w['korean_meaning'] for w in same_pos_words], 4)
+        else:
+            # 같은 품사 단어가 부족한 경우, 다른 품사 단어로 보충
+            other_words = [w for w in words if w['korean_meaning'] != correct_meaning]
+            if len(other_words) >= 4:
+                wrong_choices = random.sample([w['korean_meaning'] for w in other_words], 4)
+            else:
+                # 단어가 부족한 경우 중복 허용
+                wrong_choices = [random.choice([w['korean_meaning'] for w in other_words]) for _ in range(4)]
         
         # 정답과 오답을 섞어서 보기 생성
         all_choices = [correct_meaning] + wrong_choices
@@ -148,7 +161,7 @@ def meaning_quiz_game(words):
         correct_index = all_choices.index(correct_meaning) + 1
         
         # 보기 출력
-        print("\n다음 중 올바른 뜻을 선택하세요:")
+        # print("\n다음 중 올바른 뜻을 선택하세요:")
         for i, choice in enumerate(all_choices, 1):
             print(f"{i}. {choice}")
         
@@ -159,6 +172,15 @@ def meaning_quiz_game(words):
         if user_answer in ['quit', 'q']:
             print("\n퀴즈를 종료합니다.")
             break
+        
+        # 아무것도 입력하지 않은 경우 처리
+        if not user_answer:
+            print(f"정답: {correct_meaning}")
+            print(f"예문: {word['example_sentence']}")
+            # 입력하지 않은 경우 목록에 유지 (다시 출제됨)
+            print(f"남은 단어: {len(remaining_words)}개")
+            print("-" * 60)
+            continue
         
         # 답변 유효성 검사
         try:
@@ -185,7 +207,7 @@ def meaning_quiz_game(words):
             # 오답인 경우 목록에 유지 (이미 remaining_words에 남아있음)
         
         # 진행 상황 표시
-        print(f"\n남은 단어: {len(remaining_words)}개")
+        print(f"남은 단어: {len(remaining_words)}개")
         print("-" * 60)
     
     # 최종 결과 표시
@@ -211,7 +233,7 @@ def main():
     
     while True:
         print("\n난이도를 선택하세요:")
-        print("1. Under B2 (초중급)")
+        print("1. A1_to_B1 (초중급)")
         print("2. B2 (중상급)")
         print("3. C1 (고급)")
         print("4. C2 (최상급)")
@@ -221,7 +243,7 @@ def main():
         choice = input("\n선택 (1-6): ").strip()
         
         if choice == '1':
-            difficulty = 'under_B2'
+            difficulty = 'A1_to_B1'
         elif choice == '2':
             difficulty = 'B2'
         elif choice == '3':
