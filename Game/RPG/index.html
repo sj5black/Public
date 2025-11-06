@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D RPG Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 클래스 선택 화면 -->
+    <div id="classSelection" class="screen active">
+        <div class="class-selection-container">
+            <h1>캐릭터 클래스 선택</h1>
+            <div class="classes-grid">
+                <div class="class-card" data-class="warrior">
+                    <div class="class-icon">⚔️</div>
+                    <h2>전사</h2>
+                    <p>높은 체력과 공격력을 가진 근접 전투 전문가</p>
+                    <div class="stats">
+                        <div>체력: ⭐⭐⭐⭐⭐</div>
+                        <div>공격력: ⭐⭐⭐⭐</div>
+                        <div>방어력: ⭐⭐⭐⭐</div>
+                        <div>마나: ⭐⭐</div>
+                    </div>
+                </div>
+                <div class="class-card" data-class="assassin">
+                    <div class="class-icon">🗡️</div>
+                    <h2>암살자</h2>
+                    <p>높은 공격력과 회피율을 가진 빠른 전투원</p>
+                    <div class="stats">
+                        <div>체력: ⭐⭐⭐</div>
+                        <div>공격력: ⭐⭐⭐⭐⭐</div>
+                        <div>방어력: ⭐⭐</div>
+                        <div>마나: ⭐⭐⭐</div>
+                    </div>
+                </div>
+                <div class="class-card" data-class="mage">
+                    <div class="class-icon">🔮</div>
+                    <h2>마법사</h2>
+                    <p>강력한 마법 공격을 사용하는 원거리 전투원</p>
+                    <div class="stats">
+                        <div>체력: ⭐⭐</div>
+                        <div>공격력: ⭐⭐⭐⭐⭐</div>
+                        <div>방어력: ⭐⭐</div>
+                        <div>마나: ⭐⭐⭐⭐⭐</div>
+                    </div>
+                </div>
+                <div class="class-card" data-class="priest">
+                    <div class="class-icon">✨</div>
+                    <h2>사제</h2>
+                    <p>회복과 버프로 아군을 지원하는 지원형 캐릭터</p>
+                    <div class="stats">
+                        <div>체력: ⭐⭐⭐</div>
+                        <div>공격력: ⭐⭐⭐</div>
+                        <div>방어력: ⭐⭐⭐</div>
+                        <div>마나: ⭐⭐⭐⭐⭐</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 게임 화면 -->
+    <div id="gameScreen" class="screen">
+        <!-- 게임 캔버스 -->
+        <canvas id="gameCanvas"></canvas>
+        
+        <!-- UI 오버레이 -->
+        <div class="game-ui">
+            <!-- 캐릭터 정보 -->
+            <div class="character-info">
+                <div class="info-bar">
+                    <div class="stat">
+                        <span class="label">HP</span>
+                        <div class="bar-container">
+                            <div class="bar hp-bar" id="hpBar"></div>
+                            <span class="bar-text" id="hpText">100/100</span>
+                        </div>
+                    </div>
+                    <div class="stat">
+                        <span class="label">MP</span>
+                        <div class="bar-container">
+                            <div class="bar mp-bar" id="mpBar"></div>
+                            <span class="bar-text" id="mpText">50/50</span>
+                        </div>
+                    </div>
+                    <div class="stat">
+                        <span class="label">레벨</span>
+                        <span class="level-text" id="levelText">1</span>
+                    </div>
+                    <div class="stat">
+                        <span class="label">경험치</span>
+                        <div class="bar-container">
+                            <div class="bar exp-bar" id="expBar"></div>
+                            <span class="bar-text" id="expText">0/100</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 스킬 버튼 -->
+            <div class="skills-panel">
+                <div class="skill-slot" data-skill="1">
+                    <div class="skill-icon" id="skill1Icon">Q</div>
+                    <div class="skill-name" id="skill1Name">스킬1</div>
+                </div>
+                <div class="skill-slot" data-skill="2">
+                    <div class="skill-icon" id="skill2Icon">T</div>
+                    <div class="skill-name" id="skill2Name">스킬2</div>
+                </div>
+                <div class="skill-slot" data-skill="3">
+                    <div class="skill-icon" id="skill3Icon">E</div>
+                    <div class="skill-name" id="skill3Name">스킬3</div>
+                </div>
+                <div class="skill-slot" data-skill="4">
+                    <div class="skill-icon" id="skill4Icon">R</div>
+                    <div class="skill-name" id="skill4Name">스킬4</div>
+                </div>
+            </div>
+
+            <!-- 조작 가이드 -->
+            <div class="controls-panel">
+                <h3>조작법</h3>
+                <p>W: 앞으로 이동</p>
+                <p>S: 뒤로 이동</p>
+                <p>A: 왼쪽 이동</p>
+                <p>D: 오른쪽 이동</p>
+                <p>Shift+W: 대시 (빠른 이동)</p>
+                <p>마우스: 시점 전환</p>
+                <p>마우스 휠: 카메라 확대/축소</p>
+                <p>Space: 점프</p>
+                <p>Q/T/E/R: 스킬 사용</p>
+                <p>마우스 좌클릭: 포인터 잠금</p>
+                <p>I: 인벤토리</p>
+                <hr style="margin: 10px 0; border-color: #666;">
+                <h4>마나 회복</h4>
+                <p>• 2초마다 자동 회복</p>
+                <p>• 몬스터 처치 시 회복</p>
+            </div>
+        </div>
+
+        <!-- 전투 UI -->
+        <div id="battleUI" class="battle-ui hidden">
+            <div class="battle-log" id="battleLog"></div>
+        </div>
+
+        <!-- 인벤토리 -->
+        <div id="inventory" class="inventory hidden">
+            <h2>인벤토리</h2>
+            <div class="inventory-grid" id="inventoryGrid"></div>
+            <button class="close-btn" onclick="toggleInventory()">닫기 (I)</button>
+        </div>
+    </div>
+
+    <!-- Three.js 라이브러리 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
+
