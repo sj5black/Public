@@ -11,6 +11,7 @@ let gameState = {
     mouseY: 0,
     keys: {},
     shiftPressed: false,
+    ctrlPressed: false,
     cameraDistance: 3  // 카메라 거리 (스크롤로 조절)
 };
 
@@ -678,6 +679,15 @@ function setupControls() {
             gameState.shiftPressed = true;
         }
         
+        // Ctrl 키 감지
+        if (e.key === 'Control' || e.code === 'ControlLeft' || e.code === 'ControlRight') {
+            gameState.ctrlPressed = true;
+            // 포인터 잠금 해제
+            if (document.pointerLockElement) {
+                document.exitPointerLock();
+            }
+        }
+        
         if (e.key.toLowerCase() === 'w') gameState.isMoving.forward = true;
         if (e.key.toLowerCase() === 's') gameState.isMoving.backward = true;
         if (e.key.toLowerCase() === 'a') gameState.isMoving.left = true;
@@ -707,6 +717,11 @@ function setupControls() {
             gameState.shiftPressed = false;
         }
         
+        // Ctrl 키 해제
+        if (e.key === 'Control' || e.code === 'ControlLeft' || e.code === 'ControlRight') {
+            gameState.ctrlPressed = false;
+        }
+        
         if (e.key.toLowerCase() === 'w') gameState.isMoving.forward = false;
         if (e.key.toLowerCase() === 's') gameState.isMoving.backward = false;
         if (e.key.toLowerCase() === 'a') gameState.isMoving.left = false;
@@ -715,15 +730,26 @@ function setupControls() {
     
     // 마우스
     document.addEventListener('mousemove', (e) => {
-        if (document.pointerLockElement === document.getElementById('gameCanvas')) {
+        // Ctrl이 눌려있지 않을 때만 화면 회전
+        if (document.pointerLockElement === document.getElementById('gameCanvas') && !gameState.ctrlPressed) {
             gameState.mouseX += e.movementX * 0.002;
             gameState.mouseY += e.movementY * 0.003;  // 위아래 회전 감도 증가
-            gameState.mouseY = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, gameState.mouseY));
+            // gameState.mouseY = Math.max(-Math.PI, Math.min(Math.PI, gameState.mouseY));  // 180도 범위
         }
     });
     
     document.getElementById('gameCanvas').addEventListener('click', () => {
-        document.getElementById('gameCanvas').requestPointerLock();
+        // Ctrl이 눌려있지 않을 때만 포인터 잠금
+        if (!gameState.ctrlPressed) {
+            document.getElementById('gameCanvas').requestPointerLock();
+        }
+    });
+    
+    // 포인터 잠금 해제 시 감지
+    document.addEventListener('pointerlockchange', () => {
+        if (!document.pointerLockElement && gameState.ctrlPressed) {
+            // Ctrl이 눌려있으면 포인터 잠금하지 않음
+        }
     });
     
     // 마우스 휠로 카메라 확대/축소
@@ -1037,33 +1063,71 @@ function animatePlayerBody(deltaTime) {
                      gameState.isMoving.left || gameState.isMoving.right;
     
     if (isMoving) {
-        const time = Date.now() * 0.005 * (player.isRunning ? 2 : 1);
+        const speed = player.isRunning ? 2 : 1;
+        const time = Date.now() * 0.008 * speed;  // 애니메이션 속도 증가
         
-        // 팔 흔들기 (상단/하단 팔)
+        // 걷기/뛰기 모션 (더 자연스러운 보행 애니메이션)
+        const walkCycle = Math.sin(time);
+        const walkCycle2 = Math.sin(time + Math.PI);  // 반대 위상
+        
+        // 팔 흔들기 (상단/하단 팔) - 걷기 모션
         if (player.bodyParts.leftUpperArm) {
-            player.bodyParts.leftUpperArm.rotation.x = Math.sin(time) * 0.5;
-            player.bodyParts.rightUpperArm.rotation.x = -Math.sin(time) * 0.5;
-            player.bodyParts.leftLowerArm.rotation.x = Math.sin(time) * 0.3;
-            player.bodyParts.rightLowerArm.rotation.x = -Math.sin(time) * 0.3;
+            // 왼팔과 오른팔이 반대 방향으로 움직임
+            player.bodyParts.leftUpperArm.rotation.z = walkCycle * 0.8;
+            player.bodyParts.leftUpperArm.rotation.x = walkCycle * 0.3;
+            player.bodyParts.rightUpperArm.rotation.z = -walkCycle * 0.8;
+            player.bodyParts.rightUpperArm.rotation.x = -walkCycle * 0.3;
+            
+            // 팔꿈치 구부리기
+            player.bodyParts.leftLowerArm.rotation.x = Math.max(0, walkCycle) * 0.5;
+            player.bodyParts.rightLowerArm.rotation.x = Math.max(0, -walkCycle) * 0.5;
         }
         
-        // 다리 흔들기 (상단/하단 다리)
+        // 다리 흔들기 (상단/하단 다리) - 걷기 모션
         if (player.bodyParts.leftUpperLeg) {
-            player.bodyParts.leftUpperLeg.rotation.x = Math.sin(time) * 0.3;
-            player.bodyParts.rightUpperLeg.rotation.x = -Math.sin(time) * 0.3;
-            player.bodyParts.leftLowerLeg.rotation.x = Math.sin(time) * 0.2;
-            player.bodyParts.rightLowerLeg.rotation.x = -Math.sin(time) * 0.2;
+            // 다리를 앞뒤로 움직임
+            player.bodyParts.leftUpperLeg.rotation.x = walkCycle * 0.6;
+            player.bodyParts.rightUpperLeg.rotation.x = -walkCycle * 0.6;
+            
+            // 무릎 구부리기
+            player.bodyParts.leftLowerLeg.rotation.x = Math.max(0, walkCycle) * 0.8;
+            player.bodyParts.rightLowerLeg.rotation.x = Math.max(0, -walkCycle) * 0.8;
+            
+            // 발 위치 조정 (발을 들어올리는 효과)
+            if (player.bodyParts.leftFoot && player.bodyParts.rightFoot) {
+                const originalFootY = -0.75; // 원래 foot y 위치
+                player.bodyParts.leftFoot.position.y = originalFootY + Math.max(0, walkCycle) * 0.15;
+                player.bodyParts.rightFoot.position.y = originalFootY + Math.max(0, -walkCycle) * 0.15;
+            }
         }
         
-        // 몸통 약간 앞뒤로
+        // 몸통 약간 위아래로 (걷기 리듬) - 상대 위치
         if (player.bodyParts.torso) {
-            player.bodyParts.torso.rotation.x = Math.sin(time * 0.5) * 0.1;
+            const originalTorsoY = 0.7; // 원래 torso y 위치
+            player.bodyParts.torso.position.y = originalTorsoY + Math.abs(walkCycle) * 0.05;
+            player.bodyParts.torso.rotation.x = Math.sin(time * 0.5) * 0.05;
+        }
+        
+        // 머리도 약간 흔들림 - 상대 위치
+        if (player.bodyParts.head) {
+            const originalHeadY = 1.6; // 원래 head y 위치
+            player.bodyParts.head.rotation.x = Math.sin(time * 0.5) * 0.03;
+            player.bodyParts.head.position.y = originalHeadY + Math.abs(walkCycle) * 0.02;
+        }
+        
+        // 대시 시 더 빠른 모션
+        if (player.isRunning) {
+            if (player.bodyParts.torso) {
+                player.bodyParts.torso.rotation.x = -0.2;  // 앞으로 기울임
+            }
         }
     } else {
         // 정지 상태로 복귀
         if (player.bodyParts.leftUpperArm) {
             player.bodyParts.leftUpperArm.rotation.x = 0;
+            player.bodyParts.leftUpperArm.rotation.z = 0;
             player.bodyParts.rightUpperArm.rotation.x = 0;
+            player.bodyParts.rightUpperArm.rotation.z = 0;
             player.bodyParts.leftLowerArm.rotation.x = 0;
             player.bodyParts.rightLowerArm.rotation.x = 0;
         }
@@ -1075,6 +1139,15 @@ function animatePlayerBody(deltaTime) {
         }
         if (player.bodyParts.torso) {
             player.bodyParts.torso.rotation.x = 0;
+            player.bodyParts.torso.position.y = 0.7; // 원래 위치로 복귀
+        }
+        if (player.bodyParts.head) {
+            player.bodyParts.head.rotation.x = 0;
+            player.bodyParts.head.position.y = 1.6; // 원래 위치로 복귀
+        }
+        if (player.bodyParts.leftFoot && player.bodyParts.rightFoot) {
+            player.bodyParts.leftFoot.position.y = -0.75; // 원래 위치로 복귀
+            player.bodyParts.rightFoot.position.y = -0.75; // 원래 위치로 복귀
         }
     }
 }
@@ -1255,6 +1328,30 @@ function updateEnemies(deltaTime) {
         
         enemy.attackCooldown -= deltaTime;
     });
+}
+
+// 캐릭터 선택 화면으로 돌아가기
+function returnToClassSelection() {
+    // 게임 상태 초기화
+    if (gameState.player && gameState.player.mesh) {
+        gameState.scene.remove(gameState.player.mesh);
+    }
+    gameState.enemies.forEach(enemy => {
+        if (enemy.mesh) {
+            gameState.scene.remove(enemy.mesh);
+        }
+    });
+    gameState.enemies = [];
+    gameState.player = null;
+    
+    // 포인터 잠금 해제
+    if (document.pointerLockElement) {
+        document.exitPointerLock();
+    }
+    
+    // 화면 전환
+    document.getElementById('gameScreen').classList.remove('active');
+    document.getElementById('classSelection').classList.add('active');
 }
 
 // 게임 오버

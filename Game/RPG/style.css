@@ -119,6 +119,20 @@ body {
     pointer-events: auto;
 }
 
+.return-btn {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    font-size: 0.9em;
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+}
+
+.return-btn:hover {
+    background: linear-gradient(135deg, #ff5252 0%, #d32f2f 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+}
+
 .info-bar {
     display: flex;
     flex-direction: column;

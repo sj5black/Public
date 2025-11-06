@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuizQuiz - 영어 퀴즈 게임</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 로그인 화면 -->
+    <div id="loginScreen" class="screen active">
+        <div class="login-container">
+            <h1 class="game-title">🎮 QuizQuiz</h1>
+            <p class="game-subtitle">영어 퀴즈 게임</p>
+            <div class="login-form">
+                <div class="form-group">
+                    <label for="username">닉네임</label>
+                    <input type="text" id="username" placeholder="닉네임을 입력하세요" maxlength="10">
+                </div>
+                <div class="form-group">
+                    <label>아바타 선택</label>
+                    <div class="avatar-selector" id="avatarSelector">
+                        <div class="avatar-option" data-avatar="esset/boy1.png" onclick="selectAvatar('esset/boy1.png')">
+                            <img src="esset/boy1.png" alt="아바타 1">
+                        </div>
+                        <div class="avatar-option" data-avatar="esset/boy2.png" onclick="selectAvatar('esset/boy2.png')">
+                            <img src="esset/boy2.png" alt="아바타 2">
+                        </div>
+                        <div class="avatar-option" data-avatar="esset/girl1.png" onclick="selectAvatar('esset/girl1.png')">
+                            <img src="esset/girl1.png" alt="아바타 3">
+                        </div>
+                        <div class="avatar-option" data-avatar="esset/girl2.png" onclick="selectAvatar('esset/girl2.png')">
+                            <img src="esset/girl2.png" alt="아바타 4">
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary" onclick="login()">시작하기</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 시작 화면 -->
+    <div id="startScreen" class="screen">
+        <div class="start-container">
+            <div class="user-info">
+                <div class="user-avatar" id="userAvatar">
+                    <img src="esset/boy1.png" alt="아바타" id="userAvatarImg">
+                </div>
+                <div class="user-name" id="userName">게스트</div>
+                <button class="btn btn-small" onclick="logout()">로그아웃</button>
+            </div>
+            <h1 class="game-title">🎮 QuizQuiz</h1>
+            <p class="game-subtitle">영어 퀴즈 게임</p>
+            <div class="quiz-type-selector">
+                <h2>문제 유형 선택</h2>
+                <div class="quiz-type-buttons">
+                    <button class="quiz-type-btn active" data-type="vocab" onclick="selectQuizType('vocab')">
+                        <span class="type-icon">📚</span>
+                        <span class="type-name">단어 퀴즈</span>
+                    </button>
+                    <button class="quiz-type-btn" data-type="toeic" onclick="selectQuizType('toeic')">
+                        <span class="type-icon">📝</span>
+                        <span class="type-name">토익 RC</span>
+                    </button>
+                </div>
+            </div>
+            <div class="difficulty-selector">
+                <h2>난이도 선택</h2>
+                <div class="difficulty-buttons">
+                    <button class="difficulty-btn" data-difficulty="easy" onclick="startGame('easy')">
+                        <span class="difficulty-icon">🌱</span>
+                        <span class="difficulty-name">쉬움</span>
+                        <span class="difficulty-desc">초급 단어</span>
+                    </button>
+                    <button class="difficulty-btn" data-difficulty="medium" onclick="startGame('medium')">
+                        <span class="difficulty-icon">🌿</span>
+                        <span class="difficulty-name">보통</span>
+                        <span class="difficulty-desc">중급 단어</span>
+                    </button>
+                    <button class="difficulty-btn" data-difficulty="hard" onclick="startGame('hard')">
+                        <span class="difficulty-icon">🌳</span>
+                        <span class="difficulty-name">어려움</span>
+                        <span class="difficulty-desc">고급 단어</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 게임 화면 -->
+    <div id="gameScreen" class="screen quiz-show-stage" style="display: none;">
+        <!-- 스튜디오 배경 -->
+        <div class="studio-background">
+            <div class="studio-walls"></div>
+            <div class="studio-lights"></div>
+        </div>
+
+        <!-- 상단 정보 바 -->
+        <div class="top-info-bar">
+            <div class="score-info-compact">
+                <div class="info-item">
+                    <span class="info-label">점수</span>
+                    <span class="info-value" id="score">0</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">연속</span>
+                    <span class="info-value" id="combo">0</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">문제</span>
+                    <span class="info-value" id="questionNum">1/10</span>
+                </div>
+            </div>
+            <div class="timer-compact">
+                <div class="timer-bar-compact">
+                    <div class="timer-fill-compact" id="timerFill"></div>
+                </div>
+                <span class="timer-text-compact" id="timerText">30</span>
+            </div>
+        </div>
+
+        <!-- TV 스타일 전광판 -->
+        <div class="tv-screen-container">
+            <div class="tv-frame">
+                <div class="tv-screen">
+                    <div class="tv-content">
+                        <div class="tv-title">Quiz Quiz</div>
+                        <div class="question-type-badge" id="questionType">영한</div>
+                        <div class="question-text-large" id="questionText">Question</div>
+                        <div class="question-hint-text" id="questionHint"></div>
+                        <!-- 선택지 영역 (전광판 안) -->
+                        <div class="answers-container-in-tv" id="answersContainer">
+                            <!-- 선택지가 여기에 동적으로 생성됩니다 -->
+                        </div>
+                    </div>
+                </div>
+                <div class="tv-camera-icon">📹</div>
+            </div>
+        </div>
+
+        <!-- 피드백 -->
+        <div class="feedback-overlay" id="feedback">
+            <div class="feedback-content" id="feedbackContent"></div>
+        </div>
+
+        <!-- 하단 무대 플랫폼 및 참가자 -->
+        <div class="stage-platform">
+            <div class="scene-label">SCENE NO</div>
+            <div class="podiums-container" id="podiumsContainer">
+                <!-- 단상과 참가자가 여기에 동적으로 생성됩니다 -->
+            </div>
+        </div>
+
+        <!-- 채팅창 (화면 하단) -->
+        <div class="chat-panel-bottom">
+            <div class="chat-header-compact">
+                <span>채팅</span>
+                <button class="chat-toggle-btn" id="chatToggle" onclick="toggleChat()">▼</button>
+            </div>
+            <div class="chat-container-compact" id="chatContainer">
+                <div class="chat-messages-compact" id="chatMessages">
+                    <!-- 채팅 메시지가 여기에 동적으로 생성됩니다 -->
+                </div>
+                <div class="chat-input-compact">
+                    <input type="text" id="chatInput" placeholder="메시지 입력..." maxlength="50" onkeypress="handleChatKeyPress(event)">
+                    <button class="chat-send-compact" onclick="sendChatMessage()">전송</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 게임 종료 버튼 -->
+        <div class="game-controls">
+            <button class="btn-quit" onclick="showResult()">포기하기</button>
+        </div>
+    </div>
+
+    <!-- 결과 화면 -->
+    <div id="resultScreen" class="screen">
+        <div class="result-container">
+            <h1 class="result-title">게임 결과</h1>
+            <div class="result-stats">
+                <div class="stat-item">
+                    <div class="stat-icon">🎯</div>
+                    <div class="stat-value" id="finalScore">0</div>
+                    <div class="stat-label">최종 점수</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">✅</div>
+                    <div class="stat-value" id="correctCount">0</div>
+                    <div class="stat-label">정답</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">❌</div>
+                    <div class="stat-value" id="incorrectCount">0</div>
+                    <div class="stat-label">오답</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">🔥</div>
+                    <div class="stat-value" id="maxCombo">0</div>
+                    <div class="stat-label">최대 연속</div>
+                </div>
+            </div>
+            <div class="result-message" id="resultMessage"></div>
+            <div class="result-buttons">
+                <button class="btn btn-primary" onclick="restartGame()">다시하기</button>
+                <button class="btn btn-secondary" onclick="goToStart()">메인으로</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
+
