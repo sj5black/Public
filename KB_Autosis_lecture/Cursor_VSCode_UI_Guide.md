@@ -66,6 +66,9 @@ GitHub 계정을 통해 클라우드 동기화 기능을 활성화하세요.
 
 > ✅ 위 설정은 VS Code 기본 설정(`settings.json`)과 동일하게 동작합니다.
 
+VSCODE 와 동일하게 액티브바 설정 방법
+1. Ctrl + , 로 설정창 진입
+2. WorkBench -> Appearance 에서 Active bar를 vertical 로 변경
 ---
 
 ## 🧠 4. AI 관련 기능만 부분적으로 비활성화하기
