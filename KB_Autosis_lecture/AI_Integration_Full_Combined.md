@@ -7,7 +7,7 @@ AI를 프로젝트에 도입할 때 고려해야 할 두 가지 대표적인 접
 
 ---
 
-## 🩵 1. 기존 LLM모델의 API 활용 (OpenAI)
+## 🩵 1. 기존 LLM모델의 API 활용
 
 ### 📌 개요
 OpenAI의 ChatGPT API나 Embedding API를 사용하는 방식이다. 
@@ -17,6 +17,8 @@ OpenAI의 ChatGPT API나 Embedding API를 사용하는 방식이다.
 ---
 
 ### 💸 (1) 모델별 토큰 과금 구조
+
+#### OpenAI
 
 | Model                 |  Input | Cached input |      Output | 용도               | 비고                    |
 | --------------------- | -----: | -----------: | ----------: | ---------------- | --------------------- |
@@ -32,22 +34,97 @@ OpenAI의 ChatGPT API나 Embedding API를 사용하는 방식이다.
 | **gpt-5-nano**        |  $0.05 |       $0.005 |   **$0.40** | 초저비용 룰기반/보조 태스크  | 지연·품질보다 비용 최우선        |
 | **gpt-4.1-nano**      |  $0.10 |       $0.025 |   **$0.40** | 초저비용 경량 처리       | 소형 태스크·프리컴퓨트용         |
 
+#### Gemini
+| Model                          | Input (≤0.2M) | Input (>0.2M) |           Output (≤0.2M) | Output (>0.2M) | 용도                | 비고                                                |
+| ------------------------------ | ------------: | ------------: | -----------------------: | -------------: | ----------------- | ------------------------------------------------- |
+| **Gemini 2.5 Pro**             |         $1.25 |         $2.50 |                  **$10** |        **$15** | 고성능 멀티모달 & 고난도 추론 | 일괄 API 입력 $0.625 / 출력 $5 적용                       |
+| **Gemini 2.5 Flash**           |         $0.30 |         $0.30 |                **$2.50** |      **$2.50** | 일반 멀티모달, 속도/비용 균형 | 일괄 API 입력 $0.15 / 출력 $1.25, 학습 토큰 $5/1M           |
+| **Gemini 2.5 Flash (Preview)** |         $0.15 |         $0.15 | $0.60 (비추론) / $3.50 (추론) |  $0.60 / $3.50 | 실험용 Flash 프리뷰     | 2025.07.15 종료, 일괄 API 지원 ($0.075 / $0.30 / $1.75) |
+| **Gemini 2.5 Flash Live API**  |         $0.50 |         $0.50 |                **$2.00** |      **$2.00** | 실시간 스트리밍·대화       | 오디오 출력 $12, 영상/오디오 입력 $3                          |
+| **Gemini 2.5 Flash Lite**      |         $0.10 |         $0.10 |                **$0.40** |      **$0.40** | 초저비용 멀티모달         | 가장 저렴한 Gemini 모델 (일괄 API 없음)                      |
+
+#### Grok
+| Model                | 입력 토큰 (1M) | 출력 토큰 (1M) | 비고           |
+| -------------------- | ---------: | ---------: | ------------ |
+| **Grok-4**           |  **$3.00** | **$15.00** | 현재 주력 모델     |
+| **Grok-4-fast**      |  **$0.20** |  **$0.50** | 속도·비용 효율성 중점 |
+| **Grok-3**           |  **$3.00** | **$15.00** | 엔터프라이즈 작업 적합 |
+| **Grok-code-fast-1** |  **$0.20** |  **$1.50** | 코딩 작업 특화 모델  |
+
+토큰(token): AI 언어 모델이 텍스트를 처리하기 위해 나누는 최소 "의미" 단위   
+1. 문장을 작은 조각(Token)으로 분해하고
+2. 각 토큰을 고유한 숫자(ID)로 매핑하고
+3. 이 ID를 임베딩 벡터로 변환해 신경망에 집어넣는다
+
+한국어
+```
+한국의 AI 산업 동향을 알려줘
+
+"한", "국", "의", "AI", "산", "업", "동", "향", "을", "알", "려", "줘"
+→ 12 tokens
+```
+
+영어
+```
+Summarize the AI industry trends in Korea
+
+["Summ", "arize"], "the", "AI", "industry", "trends", "in", "Korea"
+→ 8 tokens
+```
+→ 통상적으로 같은 표현을 출력할 때 영어가 한국어보다 더 적은 토큰 소모
+
+#### OpenAI 활용 예시
+
 ```python
 # OpenAI
+import os
+from dotenv import load_dotenv
 from openai import OpenAI
-client=OpenAI()
-print(client.chat.completions.create(
-  model="gpt-5-mini",
-  messages=[{"role":"user","content":"한국의 AI 산업 동향 요약"}]
-).choices[0].message.content)
 
-# Ollama
-import requests
-payload={"model":"exaone3.5",
-         "messages":[{"role":"user","content":"한국의 AI 산업 동향 요약"}],
-         "options":{"temperature":0.3,"top_p":0.9}}
-print(requests.post("http://localhost:11434/api/chat", json=payload).json()
-      ["message"]["content"])
+# 1. 환경변수 로드
+load_dotenv()
+
+api_key = os.getenv("OPENAI_API_KEY")
+if not api_key:
+    raise ValueError("OPENAI_API_KEY 가 .env 에 설정되어 있지 않습니다.")
+
+# 2. 클라이언트 생성
+client = OpenAI(api_key=api_key)
+
+def ask_ai(query: str) -> str:
+    """
+    사용자의 질문(query)을 받아 OpenAI gpt-5-nano로 응답을 생성하는 함수
+    """
+    try:
+        response = client.chat.completions.create(
+            model="gpt-5-nano",
+            messages=[
+                {
+                    "role": "system",
+                    "content": "You are a helpful assistant specialized in Korean IT and AI industry trends."
+                },
+                {
+                    "role": "user",
+                    "content": query
+                }
+            ]
+        )
+        # 첫 번째 응답 메시지의 content 추출
+        return response.choices[0].message.content
+    except Exception as e:
+        print(f"[ERROR] OpenAI API 호출 중 오류 발생: {e}")
+        return "죄송하지만 지금은 답변을 생성할 수 없습니다. 잠시 후 다시 시도해 주세요."
+
+if __name__ == "__main__":
+    # 3. 사용자에게 질문 입력 받기
+    user_query = input("질문을 입력하세요 (예: 한국의 AI 산업 동향 요약): ")
+
+    # 4. AI에게 질문 전달 후 응답 받기
+    answer = ask_ai(user_query)
+
+    # 5. 응답 출력
+    print("\n[AI 응답]")
+    print(answer)
 ```
 
 ---
@@ -179,6 +256,20 @@ client.chat.completions.create(
 
 또한 GPU는 **혼합정밀도(FP16/BF16)**, **텐서 코어(Tensor Core)**, **양자화(Quantization, gguf 4bit/6bit)** 등을 통해 메모리 사용량을 줄이면서도 연산 효율을 높인다. Ollama는 이러한 최적화를 자동으로 적용해 GPU가 존재하면 CUDA로 전환하고, 없으면 자동으로 CPU fallback을 수행한다.  
 결과적으로, **같은 하드웨어에서도 속도를 높이고 VRAM 효율을 극대화할 수 있는 구조**가 된다.
+
+**혼합정밀도**: 기존 FP32로만 구현된 저장방식을 정보중요도에 따라 FP32랑 FP16/BF16을 섞어서   
+→ VRAM 덜 쓰고, 수치 안정성 유지하면서 빠르게 계산하는 테크닉  
+→ 모델 파라미터 / activation: FP16 또는 BF16   
+→ Gradient accumulation, 일부 optimizer 내부 계산, loss: FP32 유지   
+→ FP = Floating Point (ex: 3.141592, 2367.235, 106903.1)   
+→ BF = Brain Floating Point (bfloat16)
+
+**텐서 코어**: FP16/BF16 행렬 곱 연산에 특화된 딥러닝 전용 하드웨어 유닛   
+→ 일반 CUDA 코어로 FP32 행렬연산 시 클록 당 처리하는 연산개수가 제한적인데, 텐서코어는 작은 행렬블록을 한번에 처리하여 훨씬 빠름
+
+**양자화**: 학습된 모델 가중치를 극단적으로 압축해서 모델 크기·VRAM을 확 줄이면서도, 성능은 어느 정도 유지하는 테크닉   
+→ 기존 32비트 체계의 실수정보를 8bit, 6bit, 4bit 단위로 축소 (메모리 절감)   
+→ 중요도가 높은 weight만 정밀도를 유지하고, 그 외의 정보만 압축하기 떄문에 메모리 효율 대비 성능이 크게 변하지 않음
 
 ---
 
