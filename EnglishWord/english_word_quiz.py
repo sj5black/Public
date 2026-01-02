@@ -127,7 +127,7 @@ def meaning_quiz_game(words):
         print(f"[문제 {len(words) - len(remaining_words) + 1}/{len(words)}]  {word['entry']}\n")
         # print(f"{word['entry']}\n")
         
-        # 5지선다 객관식 보기 생성
+        # 10지선다 객관식 보기 생성
         correct_meaning = word['korean_meaning']
         wrong_choices = []
         
@@ -142,16 +142,16 @@ def meaning_quiz_game(words):
             # 단일 품사인 경우
             same_pos_words = [w for w in words if w['korean_meaning'] != correct_meaning and w['part_of_speech'] == word_pos]
         
-        if len(same_pos_words) >= 4:
-            wrong_choices = random.sample([w['korean_meaning'] for w in same_pos_words], 4)
+        if len(same_pos_words) >= 9:
+            wrong_choices = random.sample([w['korean_meaning'] for w in same_pos_words], 9)
         else:
             # 같은 품사 단어가 부족한 경우, 다른 품사 단어로 보충
             other_words = [w for w in words if w['korean_meaning'] != correct_meaning]
-            if len(other_words) >= 4:
-                wrong_choices = random.sample([w['korean_meaning'] for w in other_words], 4)
+            if len(other_words) >= 9:
+                wrong_choices = random.sample([w['korean_meaning'] for w in other_words], 9)
             else:
                 # 단어가 부족한 경우 중복 허용
-                wrong_choices = [random.choice([w['korean_meaning'] for w in other_words]) for _ in range(4)]
+                wrong_choices = [random.choice([w['korean_meaning'] for w in other_words]) for _ in range(9)]
         
         # 정답과 오답을 섞어서 보기 생성
         all_choices = [correct_meaning] + wrong_choices
@@ -160,13 +160,20 @@ def meaning_quiz_game(words):
         # 정답의 위치 찾기
         correct_index = all_choices.index(correct_meaning) + 1
         
-        # 보기 출력
+        # 보기 출력 (가로로 5개씩 2줄)
         # print("\n다음 중 올바른 뜻을 선택하세요:")
-        for i, choice in enumerate(all_choices, 1):
-            print(f"{i}. {choice}")
+        print()
+        for row in range(2):
+            choices_in_row = []
+            for col in range(5):
+                idx = row * 5 + col
+                if idx < len(all_choices):
+                    choices_in_row.append(f"{idx + 1}. {all_choices[idx]}")
+            if choices_in_row:
+                print("  ".join(choices_in_row))
         
         # 사용자 답변 입력
-        user_answer = input("\n선택 (1-5): ").strip()
+        user_answer = input("\n선택 (1-10): ").strip()
         
         # 종료 명령 확인
         if user_answer in ['quit', 'q']:
@@ -185,8 +192,8 @@ def meaning_quiz_game(words):
         # 답변 유효성 검사
         try:
             user_choice = int(user_answer)
-            if user_choice < 1 or user_choice > 5:
-                print("\n잘못된 입력입니다. 1-5 중에서 선택해주세요.")
+            if user_choice < 1 or user_choice > 10:
+                print("\n잘못된 입력입니다. 1-10 중에서 선택해주세요.")
                 continue
         except ValueError:
             print("\n잘못된 입력입니다. 숫자를 입력해주세요.")
@@ -268,7 +275,7 @@ def main():
             # 퀴즈 타입 선택
             print("\n퀴즈 타입을 선택하세요:")
             print("1. 한국어 뜻 → 영어 단어 (기존 방식)")
-            print("2. 영어 단어 → 한국어 뜻 (5지선다 객관식)")
+            print("2. 영어 단어 → 한국어 뜻 (10지선다 객관식)")
             
             quiz_type = input("\n선택 (1-2): ").strip()
             
